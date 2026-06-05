@@ -15,28 +15,29 @@ pipeline {
         }
  
         stage('Build') {
-            steps {
-                bat 'mvn clean'
-            }
+    steps {
+        dir('Cucumber_BBD_Jenkins') {
+            bat 'mvn clean'
         }
- 
-        stage('Compile') {
-            steps {
-                bat 'mvn compile'
-            }
-        }
+    }
+}
  
         stage('Test') {
-            steps {
-                bat 'mvn test'
-            }
+    steps {
+        dir('Cucumber_BBD_Jenkins') {
+            bat 'mvn test'
         }
+    }
+}
  
-        stage('Package') {
-            steps {
-                bat 'mvn package'
-            }
+       
+       stage('Package') {
+    steps {
+        dir('Cucumber_BBD_Jenkins') {
+            bat 'mvn package'
         }
+    }
+}
         stage('Docker Build') {
     steps {
         bat 'docker build -t cucumber-framework .'
