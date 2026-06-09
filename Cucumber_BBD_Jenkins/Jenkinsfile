@@ -3,6 +3,7 @@ pipeline {
  
     tools {
         maven 'Maven3'
+        jdk  'JDK'
     }
  
     stages {
@@ -21,6 +22,13 @@ pipeline {
         }
     }
 }
+   stage('Compile') {
+            steps {
+                dir('Maven_Test_code') {
+                    bat 'mvn compile'
+                }
+            }
+        }      
  
         stage('Test') {
     steps {
