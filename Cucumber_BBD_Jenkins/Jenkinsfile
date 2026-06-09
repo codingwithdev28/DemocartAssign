@@ -24,7 +24,7 @@ pipeline {
 }
    stage('Compile') {
             steps {
-                dir('Maven_Test_code') {
+                dir('Cucumber_BBD_Jenkins') {
                     bat 'mvn compile'
                 }
             }
